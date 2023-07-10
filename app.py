@@ -39,7 +39,17 @@ def Correo():
         subject = 'Un nuevo usuario quiere contactarse contigo'
         content = "holaa, el usuario " + nombre1 + "lleno el formulario de la pagina web, su correo es: " + correo1 + ". \n el o ella te envia este mensaje: \n" + texto1
 
+        em = EmailMessage()
+        em['From'] = user
+        em['To'] = "bazand25@gmail.com"
+        em['Subject'] = subject
+        em.set_content(content)
 
+        context1 = ssl.create_default_context()
+
+        with smtplib.SMTP_SSL('smtp.gmail.com',465,context=context1) as smtp:
+            smtp.login(user,app_password)
+            smtp.sendmail(user,"bazand25@gmail.com",em.as_string())
         return jsonify({
             'success': True,
             'message': 'se envio el correo'
