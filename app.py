@@ -30,7 +30,7 @@ def api_home():
 @app.route('/correo', methods=['POST'])
 def Correo():
         user = 'correo01321@gmail.com'
-        app_password = 'xwdsrpqihcxaefpz'
+        app_password = 'fqhrnzgxfzfubacp'
 
         correo1 = request.json.get("correo")
         nombre1 = request.json.get("nombre")
